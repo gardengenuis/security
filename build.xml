@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="security-project" default="jar" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	
+	<import file="properties.xml"/>
+	<property name="jar-name">security-garden</property>
+	<property name="jar-version">0.0.1</property>
+	
+	<target name="prepare">
+		<delete dir="${build.dir}" deleteonexit="true"/>
+		<delete dir="${dist.dir}" deleteonexit="true"/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+	
+	<target name="init-ivy">
+		<ivy:settings file="${ivy.dir}/ivysettings.xml"/>
+		<ivy:retrieve/>
+	</target>
+	
+	<target name="compile" depends="init-ivy">
+		<javac srcdir="${src.dir}"
+	                destdir="${build.dir}" debug="${compile.debug}"
+	                deprecation="${compile.deprecation}" optimize="${compile.optimize}"
+	                classpathref="lib.classpath">
+		</javac>
+	</target>
+	
+	<target name="jar" depends="prepare,compile">
+		<manifestclasspath property="jar.classpath" jarfile="${dist.dir}/${jar-name}-${jar-version}.jar">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+			</classpath>
+		</manifestclasspath>
+		<jar destfile="${dist.dir}/${jar-name}-${jar-version}.jar" basedir="${build.dir}">  
+			<manifest>
+	            <attribute name="Built-By" value="${user.name}"/>
+	            <attribute name="Specification-Title" value="Adminitration Security Tool"/>
+	            <attribute name="Specification-Version" value="${jar-version}"/>
+	            <attribute name="Specification-Vendor" value="GARDEN.org"/>
+				<attribute name="Class-Path" value="${jar.classpath}"/>
+	        </manifest>
+        </jar>
+	</target>
+</project>

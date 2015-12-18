@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="dist.dir" value="${basedir}/dist"/>
+	
+	<property name="javac.debug" value="true"/>
+    <property name="compile.deprecation" value="true"/>
+    <property name="compile.debug" value="true"/>
+    <property name="compile.optimize" value="false"/>
+	
+	<property file="build.properties"/>
+		
+	<property name="lib.dir" location="${dependency-lib.dir}"/>
+    <property file="${lib.dir}/lib.properties"/>
+    
+    
+    <!-- =================================================================== -->
+    <!-- Classpaths                                                          -->
+    <!-- =================================================================== -->
+    
+	<!-- garden -->
+	<path id="garden.classpath">
+        <fileset dir="${garden.dir}" includes="*.jar"/>
+    </path>
+    <!-- hibernate -->
+	<path id="hibernate.classpath">
+        <fileset dir="${hibernate.dir}" includes="*.jar"/>
+    </path>
+    <!-- spring -->
+	<path id="spring.classpath">
+        <fileset dir="${spring.dir}" includes="*.jar"/>
+    </path>
+    <!-- log4j -->
+	<path id="log4j.classpath">
+        <fileset dir="${log4j.dir}" includes="*.jar"/>
+    </path>
+	<!-- anltr -->
+	<path id="anltr.classpath">
+        <fileset dir="${anltr.dir}" includes="*.jar"/>
+    </path>
+    <!-- common -->
+	<path id="common.classpath">
+        <fileset dir="${common.dir}" includes="*.jar"/>
+    </path>
+    <!-- dom4j -->
+	<path id="dom4j.classpath">
+        <fileset dir="${dom4j.dir}" includes="*.jar"/>
+    </path>
+    <!-- oracle -->
+	<path id="oracle.classpath">
+        <fileset dir="${oracle.dir}" includes="*.jar"/>
+    </path>
+	<!-- velocity -->
+	<path id="velocity.classpath">
+        <fileset dir="${velocity.dir}" includes="*.jar"/>
+    </path>
+	
+	<path id="properties">
+		<pathelement location="${src.dir}"/>
+	</path>
+	
+	<path id="lib.classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+	
+</project>

@@ -1,0 +1,25 @@
+<ivy-module version="1.0">
+    <info organisation="garden" module="security"/>
+    <dependencies>
+    	<dependency org="apache" name="commons-lang" rev="2.4"/>
+    	<dependency org="apache" name="commons-logging" rev="1.1.3"/>
+    	<dependency org="log4j" name="log4j" rev="1.2.17"/>
+    	<dependency org="apache" name="commons-io" rev="2.4"/>
+    	<dependency org="opensymphony" name="oscache" rev="2.4.1"/>
+    	
+    	<dependency org="spring" name="spring-core" rev="4.0.6"/>
+    	<dependency org="spring" name="spring-context" rev="4.0.6"/>
+    	<dependency org="spring" name="spring-context-support" rev="4.0.0"/>
+    	<dependency org="spring" name="spring-beans" rev="4.0.6"/>
+    	<dependency org="spring" name="spring-aop" rev="4.0.6"/>
+    	
+    	<dependency org="spring-security" name="spring-security-core" rev="3.2.0"/>
+    	<dependency org="spring-security" name="spring-security-web" rev="3.2.0"/>
+    	
+    	<dependency org="servlet" name="servlet-api" rev="2.5"/>
+    	
+        <dependency org="garden" name="utility-garden" rev="0.0.1"/>
+        <dependency org="garden" name="dao-garden" rev="0.0.1"/>
+        <dependency org="garden" name="sysadmin-garden" rev="0.0.1"/>
+    </dependencies>
+</ivy-module>
