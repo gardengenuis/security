@@ -74,7 +74,8 @@ public class SecurityUserDetailsService implements UserDetailsService {
 		try {
 			SysUser sysUser = systemService.getSysUserByUserCode(username);
 			
-			if ( sysUser == null) {
+			if ( sysUser == null
+					|| !sysUser.isValid()) {
 				throw new UsernameNotFoundException(username); 
 			}
 
