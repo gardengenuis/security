@@ -58,7 +58,8 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
  */
 public class SecurityMetadataSource implements
 FilterInvocationSecurityMetadataSource {
-	private static final String DEFAULT_ROLE = "";  // 若url无设置访问权限
+	public static final String DEFAULT_ROLE = "";  // 若url无设置访问权限
+	public static final String INVALIDE_RESOURCE = "SEC_INVALID_RESOURCE";  // 若url无设置访问权限
 	
 	private Log log = LogFactory.getLog(SecurityMetadataSource.class);
 	// 资源操作缓存
@@ -93,12 +94,17 @@ FilterInvocationSecurityMetadataSource {
 			for ( SysResource sysResource : sysResources) {
 				List<ConfigAttribute> caList = new ArrayList<ConfigAttribute>();
 				String url = sysResource.getResourceUrl();
-				List<SysRole> roles = sysResource.getRoles();
 				
-				for ( SysRole role : roles) {
-					ConfigAttribute ca = new SecurityConfig(role.getRoleCode());
-					
+				if( sysResource.getStatus().equals("0")) { // 无效资源
+					ConfigAttribute ca = new SecurityConfig(INVALIDE_RESOURCE);
 					caList.add(ca);
+				} else {
+					List<SysRole> roles = sysResource.getRoles();
+					
+					for ( SysRole role : roles) {
+						ConfigAttribute ca = new SecurityConfig(role.getRoleCode());
+						caList.add(ca);
+					}
 				}
 				
 				resourceRoleMap.put(url, caList);

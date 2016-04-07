@@ -55,6 +55,6 @@ public class SecurityUtils {
 	public static void main(String[] args) {
 		System.out.println(encodeViaSHA("jsapi_ticket=sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg&noncestr=Wm3WZYTPz0wzccnW&timestamp=1414587457&url=http://mp.weixin.qq.com?params=value", null));
 		System.out.println(encodeViaSHA("12345", ""));
-		System.out.println(encodeViaSHA("12345", "admin"));
+		System.out.println(encodeViaMD5("1234", "13751777084"));
 	}
 }
